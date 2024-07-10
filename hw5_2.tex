@@ -1,0 +1,434 @@
+\documentclass[a1paper]{article}
+\usepackage{amsmath}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[margin=0.5in]{geometry}
+
+\lstset{ 
+  language=Python,                  % the language of the code
+  basicstyle=\ttfamily\footnotesize,% the size of the fonts that are used for the code
+  numbers=left,                     % where to put the line-numbers
+  numberstyle=\tiny\color{gray},    % the style that is used for the line-numbers
+  stepnumber=1,                     % the step between two line-numbers. If it's 1, each line will be numbered
+  numbersep=5pt,                    % how far the line-numbers are from the code
+  backgroundcolor=\color{white},    % choose the background color. You must add \usepackage{color}
+  showspaces=false,                 % show spaces adding particular underscores
+  showstringspaces=false,           % underline spaces within strings
+  showtabs=false,                   % show tabs within strings adding particular underscores
+  frame=single,                     % adds a frame around the code
+  rulecolor=\color{black},          % if not set, the frame-color may be changed on line-breaks within not black text (e.g., comments (green here))
+  tabsize=2,                        % sets default tabsize to 2 spaces
+  captionpos=b,                     % sets the caption-position to bottom
+  breaklines=true,                  % sets automatic line breaking
+  breakatwhitespace=false,          % sets if automatic breaks should only happen at whitespace
+  title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+  keywordstyle=\color{blue},        % keyword style
+  commentstyle=\color{gray},        % comment style
+  stringstyle=\color{orange},       % string literal style
+}
+
+\title{Assignment \#5: Waterfall Distribution}
+\author{Daniel Hardesty Lewis \\ ID: dl3645}
+\date{}
+
+\begin{document}
+
+\maketitle
+
+\section*{Assignment \#5: Waterfall Distribution}
+
+\subsection*{Questions}
+\begin{itemize}
+    \item Assume a developer has no money to invest but has found a development opportunity. His uncle is willing to invest with him 100\% of the equity but requires the following terms:
+    \begin{itemize}
+        \item No developer fee allowed
+        \item First, annual 15\% IRR to the uncle
+        \item Then split will be 30\% to the developer and 70\% to the uncle.
+    \end{itemize}
+    \begin{enumerate}
+        \item[a)] Assuming an ‘all equity’ deal of \$10mm TDC, what will be the developer’s profit if he sells the project for \$20mm after 2 years?
+        
+        \textbf{Calculations:}
+        
+        Given:
+        \begin{itemize}
+            \item Total Development Cost (TDC): \$10,000,000
+            \item Sell Price (SP): \$20,000,000
+            \item Years: 2
+            \item Target IRR: 15\%
+            \item Uncle Share: 70\%
+            \item Developer Share: 30\%
+        \end{itemize}
+        
+        To find uncle's required return for 15\% IRR:
+        
+        \[
+        \text{Required Return} = \text{TDC} \times (1 + \text{IRR})^n
+        \]
+        
+        \[
+        \text{Required Return} = 10,000,000 \times (1 + 0.15)^2 = \$13,225,000
+        \]
+        
+        Remaining profit after uncle's return:
+        
+        \[
+        \text{Remaining Profit} = \text{Sell Price} - \text{Uncle's Required Return}
+        \]
+        
+        \[
+        \text{Remaining Profit} = 20,000,000 - 13,225,000 = \$6,775,000
+        \]
+        
+        Developer's profit (30\% of remaining):
+        
+        \[
+        \text{Developer's Profit} = \text{Remaining Profit} \times \text{Developer Share}
+        \]
+        
+        \[
+        \text{Developer's Profit} = 6,775,000 \times 0.30 = \$2,032,500
+        \]
+        
+        Uncle's profit (70\% of remaining):
+        
+        \[
+        \text{Uncle's Profit} = \text{Remaining Profit} \times \text{Uncle Share}
+        \]
+        
+        \[
+        \text{Uncle's Profit} = 6,775,000 \times 0.70 = \$4,742,500
+        \]
+        
+        \item[b)] Assuming an ‘all equity’ deal of \$10mm TDC and cashing out after 2 years. What should be the minimum profit so the developer doesn’t work for free.
+        
+        \textbf{Calculations:}
+        
+        To find the minimum sell price to meet 15\% IRR:
+        
+        \[
+        \text{Minimum Sell Price} = \frac{\text{Uncle's Required Return}}{1 - \text{Developer Share}}
+        \]
+        
+        \[
+        \text{Minimum Sell Price} = \frac{10,000,000 \times (1 + 0.15)^2}{1 - 0.30} = \frac{13,225,000}{0.70} = \$18,892,857.14
+        \]
+        
+        Minimum profit for developer:
+        
+        \[
+        \text{Minimum Profit} = \text{Minimum Sell Price} - \text{TDC}
+        \]
+        
+        \[
+        \text{Minimum Profit} = 18,892,857.14 - 10,000,000 = \$8,892,857.14
+        \]
+    \end{enumerate}
+    \item Assume the developer was able to finance the project with 50\% debt. TDC is now \$11m due to the financing costs and the developer sells the project after 2 years for \$20m. The developer invests 20\% of the equity, the uncle 80\% and the developer gets 40\% promote after 15\% IRR.
+    \begin{itemize}
+        \item What is the split now after the 15\% hurdle is met?
+        
+        \textbf{Calculations:}
+        
+        Given:
+        \begin{itemize}
+            \item Total Development Cost with Debt (TDC): \$11,000,000
+            \item Debt Ratio (DR): 50\%
+            \item Equity Needed (EN): \( TDC \times (1 - DR) \)
+            \item Developer Equity: 20\% of Equity Needed
+            \item Uncle Equity: 80\% of Equity Needed
+            \item Promote Share: 40\%
+        \end{itemize}
+        
+        Equity Needed (EN):
+        
+        \[
+        \text{Equity Needed} = 11,000,000 \times (1 - 0.50) = \$5,500,000
+        \]
+        
+        Developer Equity (20\% of Equity Needed):
+        
+        \[
+        \text{Developer Equity} = 5,500,000 \times 0.20 = \$1,100,000
+        \]
+        
+        Uncle Equity (80\% of Equity Needed):
+        
+        \[
+        \text{Uncle Equity} = 5,500,000 \times 0.80 = \$4,400,000
+        \]
+        
+        Uncle's required return for 15\% IRR:
+        
+        \[
+        \text{Uncle's Required Return} = 4,400,000 \times (1 + 0.15)^2 = \$5,818,750
+        \]
+        
+        Remaining profit after debt and uncle IRR:
+        
+        \[
+        \text{Remaining Profit} = \text{Sell Price} - (\text{TDC with Debt} \times \text{Debt Ratio}) - \text{Uncle's Required Return}
+        \]
+        
+        \[
+        \text{Remaining Profit} = 20,000,000 - (11,000,000 \times 0.50) - 5,818,750 = \$8,681,250
+        \]
+        
+        Promote (40\% of remaining):
+        
+        \[
+        \text{Promote} = 8,681,250 \times 0.40 = \$3,472,500
+        \]
+        
+        Developer's profit:
+        
+        \[
+        \text{Developer's Profit} = (\text{Remaining Profit} - \text{Promote}) \times \text{Developer Equity} + \text{Promote}
+        \]
+        
+        \[
+        \text{Developer's Profit} = (8,681,250 - 3,472,500) \times 0.20 + 3,472,500 = \$4,514,250
+        \]
+        
+        Uncle's profit:
+        
+        \[
+        \text{Uncle's Profit} = (\text{Remaining Profit} - \text{Promote}) \times \text{Uncle Equity}
+        \]
+        
+        \[
+        \text{Uncle's Profit} = (8,681,250 - 3,472,500) \times 0.80 = \$4,167,000
+        \]
+        
+        \item What is the value of the promote (the promote size)?
+        
+        \[
+        \text{Promote} = \$3,472,500
+        \]
+        
+        \item What’s a better deal for the developer: the terms under question \#1 or \#2?
+        
+        \[
+        \text{Better deal for developer} = \text{Deal 2 (50\% Debt Financing)}
+        \]
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Formulas}
+
+\begin{itemize}
+    \item Present Value (PV): \( PV = \frac{FV}{(1 + IRR)^n} \)
+    \item Minimum Sell Price (SP): \( SP = \frac{UR}{(1 - DS)} \)
+    \item Equity Needed (EN): \( EN = TDC \times (1 - DR) \)
+\end{itemize}
+
+\begin{lstlisting}
+                         Calculation Step               Developer ($)     Uncle ($)                        Notes
+     Initial Total Development Cost (TDC)               10,000,000.00 10,000,000.00  TDC: Total Development Cost
+                          Sell Price (SP)               20,000,000.00 20,000,000.00               SP: Sell Price
+                                    Years                           2             2
+                               Target IRR                      15.00%        15.00% IRR: Internal Rate of Return
+                              Uncle Share                      70.00%        70.00%
+                          Developer Share                      30.00%        30.00%
+        Uncle's required return (15% IRR)                             13,225,000.00        PV = FV / (1 + IRR)^n
+                         Remaining profit                6,775,000.00  6,775,000.00
+    Developer's profit (30% of remaining)                2,032,500.00
+        Uncle's profit (70% of remaining)                              4,742,500.00
+       Minimum sell price to meet 15% IRR               18,892,857.14                         SP = UR / (1 - DS)
+             Minimum profit for developer                8,892,857.14
+   Total Development Cost with Debt (TDC)               11,000,000.00 11,000,000.00
+                          Debt Ratio (DR)                      50.00%        50.00%
+                       Equity Needed (EN)                5,500,000.00  5,500,000.00          EN = TDC * (1 - DR)
+  Developer Equity (20% of equity needed)                1,100,000.00
+      Uncle Equity (80% of equity needed)                              4,400,000.00
+        Uncle's required return (15% IRR)                              5,818,750.00        PV = FV / (1 + IRR)^n
+Remaining profit after debt and uncle IRR                8,681,250.00  8,681,250.00
+               Promote (40% of remaining)                3,472,500.00
+                       Developer's profit                4,514,250.00
+ Uncle's profit (remaining after promote)                              4,167,000.00
+                Better deal for developer Deal 2 (50% Debt Financing)
+\end{lstlisting}
+
+\subsection*{Appendix: Code Implementation}
+
+\begin{lstlisting}
+import pandas as pd
+import numpy as np
+import numpy_financial as npf
+
+def calculate_irr(cash_flows):
+    return npf.irr(cash_flows)
+
+def goal_seek_for_irr(target_irr, initial_investment, years, initial_guess=1_000_000):
+    step = 100_000
+    tolerance = 0.0001
+    max_iterations = 1000
+    iteration = 0
+    current_guess = initial_guess
+    
+    while iteration < max_iterations:
+        cash_flows = [-initial_investment] + [0] * (years - 1) + [current_guess]
+        irr = calculate_irr(cash_flows)
+        
+        if abs(irr - target_irr) < tolerance:
+            return current_guess
+        
+        if irr < target_irr:
+            current_guess += step
+        else:
+            current_guess -= step
+            step /= 2
+        
+        iteration += 1
+    
+    raise ValueError("Goal seeking did not converge")
+
+# Given data
+sell_price = 20_000_000
+tdc = 10_000_000
+years = 2
+target_irr = 0.15
+uncle_share = 0.70
+developer_share = 0.30
+
+# Initial calculations for given data
+uncle_required_return_1a = goal_seek_for_irr(target_irr, tdc, years)
+remaining_profit_1a = sell_price - uncle_required_return_1a
+developer_profit_1a = remaining_profit_1a * developer_share
+uncle_profit_1a = remaining_profit_1a * uncle_share
+
+minimum_sell_price_1b = (tdc * (1 + target_irr) ** years) / (1 - developer_share)
+minimum_profit_1b = minimum_sell_price_1b - tdc
+
+tdc_with_debt = 11_000_000
+debt_ratio = 0.50
+equity_needed = tdc_with_debt * (1 - debt_ratio)
+developer_equity = 0.20
+uncle_equity = 1 - developer_equity
+promote_share = 0.40
+
+uncle_required_return_2 = goal_seek_for_irr(target_irr, equity_needed * uncle_equity, years)
+remaining_profit_2 = sell_price - (tdc_with_debt * debt_ratio) - uncle_required_return_2
+promote = remaining_profit_2 * promote_share
+developer_profit_2 = (remaining_profit_2 - promote) * developer_equity + promote
+uncle_profit_2 = (remaining_profit_2 - promote) * uncle_equity
+
+# Creating a DataFrame for better formatting and display
+data = {
+    "Calculation Step": [
+        "Initial Total Development Cost (TDC)", 
+        "Sell Price (SP)", 
+        "Years", 
+        "Target IRR", 
+        "Uncle Share", 
+        "Developer Share",
+        "Uncle's required return (15% IRR)",
+        "Remaining profit", 
+        "Developer's profit (30% of remaining)",
+        "Uncle's profit (70% of remaining)",
+        "Minimum sell price to meet 15% IRR",
+        "Minimum profit for developer",
+        "Total Development Cost with Debt (TDC)",
+        "Debt Ratio (DR)",
+        "Equity Needed (EN)",
+        "Developer Equity (20% of equity needed)",
+        "Uncle Equity (80% of equity needed)",
+        "Uncle's required return (15% IRR)",
+        "Remaining profit after debt and uncle IRR",
+        "Promote (40% of remaining)",
+        "Developer's profit",
+        "Uncle's profit (remaining after promote)",
+        "Better deal for developer"
+    ],
+    "Developer ($)": [
+        f"{tdc:,.2f}", 
+        f"{sell_price:,.2f}", 
+        f"{years}", 
+        f"{target_irr:.2%}", 
+        f"{uncle_share:.2%}", 
+        f"{developer_share:.2%}", 
+        "", 
+        f"{remaining_profit_1a:,.2f}", 
+        f"{developer_profit_1a:,.2f}", 
+        "", 
+        f"{minimum_sell_price_1b:,.2f}", 
+        f"{minimum_profit_1b:,.2f}", 
+        f"{tdc_with_debt:,.2f}", 
+        f"{debt_ratio * 100:.2f}%", 
+        f"{equity_needed:,.2f}", 
+        f"{equity_needed * developer_equity:,.2f}", 
+        "", 
+        "", 
+        f"{remaining_profit_2:,.2f}", 
+        f"{promote:,.2f}", 
+        f"{developer_profit_2:,.2f}", 
+        "", 
+        "Deal 1 (All Equity)" if developer_profit_1a > developer_profit_2 else "Deal 2 (50% Debt Financing)"
+    ],
+    "Uncle ($)": [
+        f"{tdc:,.2f}", 
+        f"{sell_price:,.2f}", 
+        f"{years}", 
+        f"{target_irr:.2%}", 
+        f"{uncle_share:.2%}", 
+        f"{developer_share:.2%}", 
+        f"{uncle_required_return_1a:,.2f}", 
+        f"{remaining_profit_1a:,.2f}", 
+        "", 
+        f"{uncle_profit_1a:,.2f}", 
+        "", 
+        "", 
+        f"{tdc_with_debt:,.2f}", 
+        f"{debt_ratio * 100:.2f}%", 
+        f"{equity_needed:,.2f}", 
+        "", 
+        f"{equity_needed * uncle_equity:,.2f}", 
+        f"{uncle_required_return_2:,.2f}", 
+        f"{remaining_profit_2:,.2f}", 
+        "", 
+        "", 
+        f"{uncle_profit_2:,.2f}", 
+        ""
+    ],
+    "Notes": [
+        "TDC: Total Development Cost", 
+        "SP: Sell Price", 
+        "", 
+        "IRR: Internal Rate of Return", 
+        "", 
+        "", 
+        "PV = FV / (1 + IRR)^n", 
+        "", 
+        "", 
+        "", 
+        "SP = UR / (1 - DS)", 
+        "", 
+        "", 
+        "", 
+        "EN = TDC * (1 - DR)", 
+        "", 
+        "", 
+        "PV = FV / (1 + IRR)^n", 
+        "", 
+        "", 
+        "", 
+        "", 
+        ""
+    ]
+}
+
+df = pd.DataFrame(data)
+
+# Pretty print the DataFrame as a table
+print(df.to_string(index=False))
+\end{lstlisting}
+
+\end{document}
+
+
+
+
+
+
