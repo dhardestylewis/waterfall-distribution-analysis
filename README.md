@@ -82,7 +82,7 @@ Adjust these values according to your specific project requirements and rerun th
 
 ### Contact
 
-For any issues or questions, please contact [Your Name] at [your email address].
+For any issues or questions, please contact [Daniel Hardesty Lewis] at [DanielHardestyLewis@gmail.com].
 
 ---
 
